@@ -2,15 +2,19 @@ from enum import Enum
 
 
 class Command(Enum):
-    new_player = "new_player"
-    get_scores = "get_scores"
-    new_game = "new_game"
-    get_games = "games"
-    game_match_history = "game_match_history"
-    add_match = "add_match"
-    get_match = "get_match"
+    Close = "close"
+    NewPlayer = "new_player"
+    GetScores = "get_scores"
+    NewGame = "new_game"
+    GetGames = "games"
+    GameMatchHistory = "game_match_history"
+    GddMatch = "add_match"
+    GetMatch = "get_match"
 
 
 class GetScoresParams(Enum):
     game: str | None
     player: str | None
+
+
+# get_scores --game fifa --player ale
