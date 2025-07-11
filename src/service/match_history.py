@@ -8,12 +8,12 @@ def update_scores(winning_team: list[str], loosing_team: list[str], game: str) -
     for player in winning_team:
         for p in players:
             if p.name == player:
-                p.scores["game"] += 1
+                p.scores[game] += 1
 
-    for player in winning_team:
+    for player in loosing_team:
         for p in players:
             if p.name == player:
-                p.scores["game"] += -1
+                p.scores[game] += -1
 
 
 def add_match() -> Match:

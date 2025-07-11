@@ -1,8 +1,6 @@
 from collections import defaultdict
 from pydantic import BaseModel
 
-from src.model.game import Game
-
 
 class Player(BaseModel):
     name: str
