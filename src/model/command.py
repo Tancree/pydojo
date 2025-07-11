@@ -4,6 +4,7 @@ from enum import Enum
 class Command(Enum):
     Close = "close"
     NewPlayer = "new_player"
+    GetPlayers = "get_players"
     GetScores = "get_scores"
     NewGame = "new_game"
     GetGames = "games"

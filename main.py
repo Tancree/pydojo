@@ -1,6 +1,6 @@
 from src.model.command import Command
 from src.model.player import Player
-from src.service import player
+from src.service import player as player_service
 
 
 def main():
@@ -8,9 +8,13 @@ def main():
 
     stay = True
     while stay:
-        user_input = input("Enter your command\n")
+        user_input = input("\nEnter your command\n")
         command = Command(user_input.split(" ")[0])
-        args = user_input.split(" ", 1)[1]
+        user_input_split = user_input.split(" ", 1)
+        if len(user_input_split) > 1:
+            args = user_input.split(" ", 1)[1]
+        else:
+            args = None
         match command:
             case Command.Close:
                 stay = False
@@ -20,9 +24,20 @@ def main():
 
             case Command.NewPlayer:
                 # new_player NAME
-                new_player = player.new_player(args)
-                players.append(new_player)
-                print(f"Added new player {new_player}")
+                if args is None:
+                    print("Hey, I need the player name!")
+                else:
+                    new_player = player_service.new_player(args)
+                    players.append(new_player)
+                    print(f"Added new player {new_player}")
+
+            case Command.GetPlayers:
+                # get_players
+                print("Players are:")
+                for player in players:
+                    print(f"    {player}")
+            case _:
+                print("Unknown command, please retry")
 
 
 if __name__ == "__main__":
