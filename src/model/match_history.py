@@ -1,7 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel
 
-from src.model.games import Games
+from src.model.game import Game
 from src.model.player import Player
 
 
