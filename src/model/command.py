@@ -9,7 +9,7 @@ class Command(Enum):
     NewGame = "new_game"
     GetGames = "games"
     GameMatchHistory = "game_match_history"
-    GddMatch = "add_match"
+    AddMatch = "add_match"
     GetMatch = "get_match"
 
 

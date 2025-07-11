@@ -1,7 +1,8 @@
 from src.model.command import Command
 from src.model.player import Player
+from src.model.game import Game
 from src.service import player as player_service
-from src.service.game import new_game
+from src.service import game as game_service
 
 def main():
     print("Hello from pydojo!")
@@ -31,7 +32,12 @@ def main():
                     players.append(new_player)
                     print(f"Added new player {new_player}")
             case Command.NewGame:
-                new_game = new_game(args)
+                if args is None:
+                    print("Hey, I need the game name!")
+                else:
+                    new_game = game_service.new_game(args)
+                    games.append(new_game)
+                    print(f"Added new game {new_game}")
                 
 
             case Command.GetPlayers:
@@ -47,4 +53,5 @@ def main():
 
 if __name__ == "__main__":
     players: list[Player] = []
+    games: list[Game] = []
     main()
