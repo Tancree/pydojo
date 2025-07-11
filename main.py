@@ -1,13 +1,10 @@
 from src.model.command import Command
-from src.model.player import Player
-from src.model.game import Game
 from src.service import player as player_service
 from src.service import game as game_service
 from src.model.match_history import Match
 
-players: list[Player] = []
-games: list[Game] = []
-match_history = []
+from src.data import players, match_history, games
+
 
 def main():
     print("Hello from pydojo!")
@@ -26,6 +23,10 @@ def main():
                 case Command.Close:
                     stay = False
                     print("oh, that was sad... bye bye")
+
+                case Command.GetScores:
+                    # player_service.get_scores()
+                    pass
 
                 case Command.AddMatch:
                     game = input("Enter the game name:\n")
