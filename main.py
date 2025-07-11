@@ -25,8 +25,10 @@ def main():
                     print("oh, that was sad... bye bye")
 
                 case Command.GetScores:
-                    # player_service.get_scores()
-                    pass
+                    if args is None:
+                        print("Hey, I need the game name!")
+                    else:
+                        player_service.print_scores(args)
 
                 case Command.AddMatch:
                     match_history.append(add_match())
