@@ -18,6 +18,7 @@ def main():
         match command:
             case Command.Close:
                 stay = False
+                print("oh, that was sad... bye bye")
 
             case Command.GetScores:
                 print(f"Command is {command}, args {args}")
