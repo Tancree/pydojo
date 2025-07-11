@@ -5,6 +5,9 @@ from src.service import player as player_service
 from src.service import game as game_service
 from src.model.match_history import Match
 
+players: list[Player] = []
+games: list[Game] = []
+match_history = []
 
 def main():
     print("Hello from pydojo!")
@@ -76,7 +79,4 @@ def main():
 
 
 if __name__ == "__main__":
-    players: list[Player] = []
-    games: list[Game] = []
-    match_history = []
     main()
