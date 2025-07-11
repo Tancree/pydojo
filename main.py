@@ -1,6 +1,7 @@
 from src.model.command import Command
 from src.model.player import Player
 from src.service import player as player_service
+from src.model.match_history import Match
 
 
 def main():
@@ -18,6 +19,27 @@ def main():
         match command:
             case Command.Close:
                 stay = False
+
+            case Command.AddMatch:
+                game = input("Enter the game name:\n")
+                team1 = input("Enter team 1 players (comma separated):\n")
+                team2 = input("Enter team 2 players (comma separated):\n")
+                team1 = team1.split(",")
+                team2 = team2.split(",")
+                winner = input("Enter the winner team (team1/team2):\n")
+                match_history.append(
+                    Match(
+                        game=game,
+                        teams=[team1, team2],
+                        winner=team1 if winner == "team1" else team2,
+                    )
+                )
+
+                # update scores
+
+            case Command.GameMatchHistory:
+                print("Match history:")
+                print("\n".join(str(match) for match in match_history))
 
             case Command.GetScores:
                 print(f"Command is {command}, args {args}")
@@ -41,5 +63,5 @@ def main():
 
 
 if __name__ == "__main__":
-    players: list[Player] = []
+    match_history = []
     main()
