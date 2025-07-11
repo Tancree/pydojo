@@ -1,7 +1,7 @@
 from src.model.command import Command
 from src.service import player as player_service
 from src.service import game as game_service
-from src.model.match_history import Match
+from src.service.match_history import add_match
 
 from src.data import players, match_history, games
 
@@ -29,19 +29,7 @@ def main():
                     pass
 
                 case Command.AddMatch:
-                    game = input("Enter the game name:\n")
-                    team1 = input("Enter team 1 players (comma separated):\n")
-                    team2 = input("Enter team 2 players (comma separated):\n")
-                    team1 = team1.split(",")
-                    team2 = team2.split(",")
-                    winner = input("Enter the winner team (team1/team2):\n")
-                    match_history.append(
-                        Match(
-                            game=game,
-                            teams=[team1, team2],
-                            winner=team1 if winner == "team1" else team2,
-                        )
-                    )
+                    match_history.append(add_match())
 
                     # update scores
 
