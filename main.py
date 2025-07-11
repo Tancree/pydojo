@@ -4,10 +4,11 @@ from src.model.game import Game
 from src.service import player as player_service
 from src.service import game as game_service
 from src.model.match_history import Match
+from src.service.game import get_game_match_history, get_games
 
 players: list[Player] = []
 games: list[Game] = []
-match_history = []
+match_history: list[Match] = []
 
 def main():
     print("Hello from pydojo!")
@@ -66,6 +67,16 @@ def main():
                         new_game = game_service.new_game(args)
                         games.append(new_game)
                         print(f"Added new game {new_game}")
+
+                case Command.GetGameMatchHistory:
+                    if args is None:
+                        print("Hey, I need the game name!")
+                    else:
+                        game_match_history = get_game_match_history(args)
+                        print(f"Match history for the game {args}: {game_match_history}")
+
+                case Command.GetGames:
+                    print(f"All registered games: {get_games()}")
 
                 case Command.GetPlayers:
                     # get_players

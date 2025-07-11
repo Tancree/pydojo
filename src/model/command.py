@@ -11,6 +11,7 @@ class Command(Enum):
     GameMatchHistory = "game_match_history"
     AddMatch = "add_match"
     GetMatch = "get_match"
+    GetGameMatchHistory = "game_match_history"
 
 
 class GetScoresParams(Enum):
