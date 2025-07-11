@@ -1,4 +1,5 @@
 from src.model.command import Command
+from src.model.player import Player
 
 
 def main():
@@ -18,4 +19,5 @@ def main():
 
 
 if __name__ == "__main__":
+    players: list[Player] = []
     main()
